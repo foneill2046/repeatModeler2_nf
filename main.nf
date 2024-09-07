@@ -75,7 +75,7 @@ process RepeatModeler_modelRepeatLibrary {
   ##conda list > conda-env.txt
   which RepeatModeler
   ##
-  RepeatModeler -engine ncbi -pa !{task.cpus} -LTRStruct -database \$THENAME 
+  RepeatModeler -engine ncbi -threads !{task.cpus} -LTRStruct -database \$THENAME 
   sleep 10 ##Helps with rare filesystem latency issues
   '''
 }
@@ -113,7 +113,7 @@ shell:
   which RepeatMasker
   RepeatMasker -v
   ##
-  RepeatMasker -nolow -no_is -norna -pa !{task.cpus} -gff -q -lib !{repeat_lib_chunk} !{genome}
+  RepeatMasker -nolow -no_is -norna -threads !{task.cpus} -gff -q -lib !{repeat_lib_chunk} !{genome}
 '''
 }
 
@@ -126,7 +126,7 @@ output:
 tag "$genome"
 script:
 """
-RepeatMasker -noint -pa ${task.cpus} -gff -q ${genome}
+RepeatMasker -noint -threads ${task.cpus} -gff -q ${genome}
 """
 }
 

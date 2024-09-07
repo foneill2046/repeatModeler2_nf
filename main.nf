@@ -113,7 +113,7 @@ shell:
   which RepeatMasker
   RepeatMasker -v
   ##
-  RepeatMasker -nolow -no_is -norna -threads !{task.cpus} -gff -q -lib !{repeat_lib_chunk} !{genome}
+  RepeatMasker -nolow -no_is -norna -pa !{task.cpus} -gff -q -lib !{repeat_lib_chunk} !{genome}
 '''
 }
 
@@ -126,7 +126,7 @@ output:
 tag "$genome"
 script:
 """
-RepeatMasker -noint -threads ${task.cpus} -gff -q ${genome}
+RepeatMasker -noint -pa ${task.cpus} -gff -q ${genome}
 """
 }
 

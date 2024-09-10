@@ -160,7 +160,7 @@ shell:
 '''
 set -o pipefail
 conda list > conda-env.txt
-cat tmp.gff | grep -vP "^#" | gt gff3 -tidy -sort -retainids | uniq | gzip > !{genome}.repeats.gff3.gz
+cat tmp.gff | grep -vP "^#" | -gt gff3 -tidy -sort -retainids | uniq | gzip > !{genome}.repeats.gff3.gz
 '''
 }
 

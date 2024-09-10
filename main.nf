@@ -223,7 +223,7 @@ conda "hmmer"
 tag "${msaFile}"
 shell:
 '''   
-/opt/hmmer/hmmer-3.4/easel/miniapps/esl-reformat --informat stockholm -o !{msaFile}.msa.fa fasta !{msaFile}
+singularity exec /flashscratch/oneilf/singularity_cache/dfam-tetools-latest.img esl-reformat --informat stockholm -o !{msaFile}.msa.fa fasta !{msaFile}
 sleep 10 ##Helps with rare filesystem latency issues
 '''
 }

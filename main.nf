@@ -248,8 +248,6 @@ workflow modelAndMaskGenome_wf {
   RepeatMasker_simple_exec(cached_genome)
   mergedOuts = RepeatMasker_simple_exec.out.mix(RepeatMasker_parallel_exec.out).collectFile(keepHeader:true,skip:3,name:"combined_repeat_masker.outs")
   convert_out_to_gff(mergedOuts)
-#  tidy_to_gff3(cached_genome,convert_out_to_gff.out)
-#  soft_mask(cached_genome,tidy_to_gff3.out)
 }
 
 workflow {
